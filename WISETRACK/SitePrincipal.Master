@@ -1,0 +1,222 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="SitePrincipal.master.cs" Inherits="WISETRACK.SitePrincipal" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><%: Page.Title %> - WISETRACK</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="Content/ag-grid-enterprise-master/dist/styles/ag-theme-balham.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/fontss/fontstyle.css" rel="stylesheet" />
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+
+    <%--    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />--%>
+    <link rel="shortcut icon" href="Imagenes/icotitle.ico" />
+    <link href="Content/carousel.css" rel="stylesheet" />
+    <link href="Content/bootstrap-responsive.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="Content/alertify.core.css" />
+    <link href="Content/jquery-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="Content/black/kendo.common.min.css" />
+    <link rel="stylesheet" href="Content/black/kendo.rtl.min.css" />
+    <link rel="stylesheet" href="Content/black/kendo.silver.min.css" />
+    <link rel="stylesheet" href="Content/black/kendo.mobile.all.min.css" />
+    <link href="Content/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" />
+    <link href="Content/dist/css/AdminLTE.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="Content/alertify.default.css" id="toggleCSS" />
+    <style>
+        .alertify-log-custom {
+            background: blue;
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+
+</head>
+<body>
+
+    <form id="form1" runat="server">
+
+        <asp:ScriptManager ID="WebScriptManager1" runat="server">
+            <Services>
+                <asp:ServiceReference Path="~/WebServices/WisetrackServices.asmx" />
+            </Services>
+            <Scripts>
+                <%--Para obtener m�s informaci�n sobre c�mo agrupar scripts en ScriptManager, consulte http://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Scripts de Framework--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <%--<asp:ScriptReference Name="jquery" />--%>
+                <asp:ScriptReference Path="~/Scripts/jquery-3.1.1.js" />
+                <%--<asp:ScriptReference Name="bootstrap.js" />--%>
+                <asp:ScriptReference Path="~/Scripts/bootstrap.js" />
+                <asp:ScriptReference Path="~/Scripts/Validacion.js" />
+                <asp:ScriptReference Path="~/Scripts/jquery.blockUI.js" />
+
+                <asp:ScriptReference Path="~/Scripts/blockUI.js" />
+                <asp:ScriptReference Path="~/Scripts/jquery.popitup.js" />
+                <asp:ScriptReference Path="~/Scripts/jquery-migrate-3.0.0.js" />
+                <asp:ScriptReference Path="~/Scripts/alertify.min.js" />
+
+                <asp:ScriptReference Path="~/Scripts/mensajes.js" />
+                <%--<asp:ScriptReference Path="~/Scripts/jquery-2.2.1.min.js" />--%>
+
+                <asp:ScriptReference Path="~/Content/black/angular.min.js" />
+                <asp:ScriptReference Path="~/Content/black/kendo.all.min.js" />
+
+                <asp:ScriptReference Path="~/Scripts/jquery-ui.js" />
+
+                <asp:ScriptReference Path="~/Content/ag-grid-enterprise-master/dist/ag-grid-enterprise.js" />
+                <asp:ScriptReference Path="~/Content/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js" />
+                <asp:ScriptReference Path="~/Content/dist/js/adminlte.min.js" />
+
+                <%--<script src="Content/ag-grid-enterprise-master/dist/ag-grid-enterprise.min.js"></script>--%>
+                <%--<script src="Content/ag-grid-master/dist/ag-grid.min.js"></script>--%>
+                <%--<script src="Content/black/dist/ag-grid-enterprise.js"></script>--%>
+                <%--<script src="Content/black/ag-grid-enterprise.min.js"></script>--%>
+                <%--<script type="text/javascript" src="../../Content/black/ag-grid-enterprise.js"></script>--%>
+                
+                <%--<asp:ScriptReference Name="respond" Path="~/Scripts/respond.js" />--%>
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+
+                <%--Scripts del sitio--%>
+            </Scripts>
+        </asp:ScriptManager>
+
+
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" runat="server" href="~/Principal.aspx">WISETRACK</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a runat="server" href="~/Vistas/Empresas/Index.aspx">Inicio</a></li>
+
+                        <li class="dropdown">
+                            <a runat="server" id="prvConfig" visible="false" href="#" class="dropdown-toggle" data-toggle="dropdown">Configuración<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a runat="server" id="prvUsuarios" visible="false" href="~/Vistas/Usuarios/Index">Cuentas</a></li>
+                                <li runat="server" id="div1" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvRoles" visible="false" href="~/Vistas/Roles/Index">Roles</a></li>
+                                <li runat="server" id="div2" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvPrivilegios" visible="false" href="~/Vistas/Privilegios/Index">Privilegios</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a runat="server" id="prvAdmin" visible="false" href="#" class="dropdown-toggle" data-toggle="dropdown">Administración<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a runat="server" id="prvEmpresa" visible="false" href="~/Vistas/Empresas/Panel">Empresa</a></li>
+                                <li runat="server" id="div3" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvPersonas" visible="false" href="~/Vistas/Personas/Index">Personas</a></li>
+                                <li runat="server" id="div4" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvAlarmas" visible="false" href="~/Vistas/Alarmas/Index">Alarmas</a></li>
+                                <li runat="server" id="div5" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvZonas" visible="false" href="~/FrmZonas">Zonas</a></li>
+                                <li runat="server" id="div6" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvTiposZona" visible="false" href="~/Vistas/TipoGeocerca/Index">Tipos de Zona</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a runat="server" id="prvMoviles" visible="false" href="#" class="dropdown-toggle" data-toggle="dropdown">Móviles<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a runat="server" id="prvSeguimiento" visible="false" href="~/FrmSeguimiento">Seguimiento</a></li>
+                                <li runat="server" id="div7" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvAuditoria" visible="false" href="~/FrmAuditoria">Auditoria</a></li>
+                                <li runat="server" id="div8" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvVehiculos" visible="false" href="~/Vistas/Vehiculos/Index">Vehículos</a></li>
+                                <li runat="server" id="div9" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvGps" visible="false" href="~/Vistas/GPSs/Index">Gps</a></li>
+                                <li runat="server" id="div17" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvAsigusuavehiculo" visible="false" href="~/Vistas/Usuarios/AsignarVehiculo">Asignacion Vehiculo</a></li>
+                                <li runat="server" id="div18" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvIDButton" visible="false" href="~/Vistas/IDButton/Index">IDButton</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a runat="server" id="prvReportes" visible="false" href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a runat="server" id="prvAlertas" visible="false" href="~/RptAlarmas">Alertas</a></li>
+                                <li runat="server" id="div10" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvAperturaCierre" visible="false" href="~/RptEstadoPuerta">Apertura-Cierre</a></li>
+                                <li runat="server" id="div11" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvRptAuditoria" visible="false" href="~/FrmRptAuditoria">Auditoria</a></li>
+                                <li runat="server" id="div12" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvDetenciones" visible="false" href="~/RptDetenciones">Detenciones</a></li>
+                                <li runat="server" id="div13" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvEntradaSalida" visible="false" href="~/RptEntradaSalida">Entrada-Salida</a></li>
+                                <li runat="server" id="div14" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvKilometraje" visible="false" href="~/RptKilometraje">Kilometraje</a></li>
+                                <li runat="server" id="div15" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvTemperatura" visible="false" href="~/FrmRptTemperatura">Temperatura</a></li>
+                                <li runat="server" id="div16" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvVelocidadMax" visible="false" href="~/RptVelocidadMaxima">Velocidad Maxima</a></li>
+                                <li runat="server" id="div19" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvEncendidoApagado" visible="false" href="~/RptEncendidoApagado">Encendido Apagado</a></li>
+                                <li runat="server" id="div20" visible="false" class="divider"></li>
+                                <li><a runat="server" id="prvConsolidado" visible="false" href="~/RptConsolidado">Consolidado</a></li>
+
+                            </ul>
+                        </li>
+                        <li>
+                            <asp:LinkButton ID="lblmensaje" runat="server" OnClick="lblmensaje_Click" CssClass="alert-link" />
+                        </li>
+                    </ul>
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <AnonymousTemplate>
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Cerrar sesión" LogoutPageUrl="~/" OnLoggingOut="Usuario_LoggingOut" />
+                                </li>
+                            </ul>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+
+            <!-- FOOTER -->
+            <footer style="padding-left: 10px; padding-right: 10px">
+                <p class="pull-right"><a href="#">Volver arriba</a></p>
+                <p>&copy; <%: DateTime.Now.Year %> - Created by Etech Group</p>
+            </footer>
+        </div>
+    </form>
+
+</body>
+</html>

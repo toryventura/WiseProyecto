@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{73F0C2B2-6A34-4FC3-A84B-F4209A50ECCD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WS.ENTIDADES</RootNamespace>
+    <AssemblyName>WS.ENTIDADES</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActulizarTrama3.cs" />
+    <Compile Include="Alarma.cs" />
+    <Compile Include="AlarmaDestinatarios.cs" />
+    <Compile Include="AlarmaGeocerca.cs" />
+    <Compile Include="AlarmaVehiculo.cs" />
+    <Compile Include="Alerta.cs" />
+    <Compile Include="Alerta2.cs" />
+    <Compile Include="AlertaEmail.cs" />
+    <Compile Include="All_task_usage.cs" />
+    <Compile Include="Area.cs" />
+    <Compile Include="AspNetRoles.cs" />
+    <Compile Include="AspNetUserClaims.cs" />
+    <Compile Include="AspNetUserLogins.cs" />
+    <Compile Include="AspNetUserRoles.cs" />
+    <Compile Include="AspNetUsers.cs" />
+    <Compile Include="CategoriaAlarma.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="DetalleGeocerca.cs" />
+    <Compile Include="EmperaUsu.cs" />
+    <Compile Include="Empresa.cs" />
+    <Compile Include="EmpresaGPS.cs" />
+    <Compile Include="EmpresaIDButton.cs" />
+    <Compile Include="EmpresaVehiculo.cs" />
+    <Compile Include="EstadoMotor.cs" />
+    <Compile Include="EstadoPuerta.cs" />
+    <Compile Include="Geocerca.cs" />
+    <Compile Include="GPS.cs" />
+    <Compile Include="GPSTrama.cs" />
+    <Compile Include="IdButton.cs" />
+    <Compile Include="IDButtonGps.cs" />
+    <Compile Include="Imei_seguimiento.cs" />
+    <Compile Include="Marca.cs" />
+    <Compile Include="Nivel.cs" />
+    <Compile Include="Per1onAsnet.cs" />
+    <Compile Include="Persona.cs" />
+    <Compile Include="Persona1.cs" />
+    <Compile Include="Privilegios.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Prueba.cs" />
+    <Compile Include="PuntosGeocerca.cs" />
+    <Compile Include="ReporteTemp.cs" />
+    <Compile Include="RolesPrivilegios.cs" />
+    <Compile Include="RolNivel.cs" />
+    <Compile Include="Seguimiento.cs" />
+    <Compile Include="Sucursal.cs" />
+    <Compile Include="TempEntradaSalida.cs" />
+    <Compile Include="TipoAlarma.cs" />
+    <Compile Include="TipoGeocerca.cs" />
+    <Compile Include="TipoPersona.cs" />
+    <Compile Include="TipoVehiculo.cs" />
+    <Compile Include="Trama.cs" />
+    <Compile Include="Trama2.cs" />
+    <Compile Include="Trama3.cs" />
+    <Compile Include="TramaTemp.cs" />
+    <Compile Include="TramaTemp1.cs" />
+    <Compile Include="UsuarioEmpresa.cs" />
+    <Compile Include="UsuarioVehiculo.cs" />
+    <Compile Include="Vehiculo.cs" />
+    <Compile Include="VehiculoConductor.cs" />
+    <Compile Include="VerficaEmail.cs" />
+    <Compile Include="ViesPersonaEmpresa.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

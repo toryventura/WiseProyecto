@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="80464fa2111e401f9e85196cf4febaac" Name="Diagram1">
+        <EntityTypeShape EntityType="WISETRACKModel.C__MigrationHistory" Width="1.5" PointX="8.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Alarma" Width="1.5" PointX="3" PointY="35.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.AlarmaDestinatarios" Width="1.5" PointX="11.25" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.AlarmaGeocerca" Width="1.5" PointX="9.75" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.AlarmaVehiculo" Width="1.5" PointX="5.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Alerta" Width="1.5" PointX="8.25" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Alerta2" Width="1.5" PointX="10.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.AlertaEmail" Width="1.5" PointX="10.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Area" Width="1.5" PointX="3.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.AspNetRoles" Width="1.5" PointX="1.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.AspNetUserClaims" Width="1.5" PointX="6" PointY="27.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.AspNetUserLogins" Width="1.5" PointX="6" PointY="48.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.AspNetUsers" Width="1.5" PointX="3.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.CategoriaAlarma" Width="1.5" PointX="0.75" PointY="36" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Empresa" Width="1.5" PointX="3" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.EmpresaGPS" Width="1.5" PointX="5.25" PointY="36.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.EmpresaIDButton" Width="1.5" PointX="5.25" PointY="30.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.EmpresaVehiculo" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.EstadoMotor" Width="1.5" PointX="10.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.EstadoPuerta" Width="1.5" PointX="10.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Geocerca" Width="1.5" PointX="7.5" PointY="36.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.GPS" Width="1.5" PointX="3" PointY="43.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.GPSTrama" Width="1.5" PointX="12.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.IdButton" Width="1.5" PointX="3" PointY="22.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.IDButtonGps" Width="1.5" PointX="8.25" PointY="32.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Marca" Width="1.5" PointX="0.75" PointY="17.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Nivel" Width="1.5" PointX="6.5" PointY="51.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Persona" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Persona1" Width="1.5" PointX="12.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Privilegios" Width="1.5" PointX="1.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Prueba" Width="1.5" PointX="13.75" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.PuntosGeocerca" Width="1.5" PointX="9.75" PointY="40.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.ReporteTemp" Width="1.5" PointX="13.75" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.RolesPrivilegios" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.RolNivel" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Seguimiento" Width="1.5" PointX="5.25" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Sucursal" Width="1.5" PointX="5.25" PointY="40.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.TipoAlarma" Width="1.5" PointX="0.75" PointY="39.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.TipoGeocerca" Width="1.5" PointX="5.25" PointY="44.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.TipoPersona" Width="1.5" PointX="3.75" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.TipoVehiculo" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Trama" Width="1.5" PointX="14.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Trama2" Width="1.5" PointX="15.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Trama3" Width="1.5" PointX="15.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.TramaTemp" Width="1.5" PointX="16.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.TramaTemp1" Width="1.5" PointX="17.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.UsuarioEmpresa" Width="1.5" PointX="11.25" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.UsuarioVehiculo" Width="1.5" PointX="8.25" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.Vehiculo" Width="1.5" PointX="3" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.VehiculoConductor" Width="1.5" PointX="8.25" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.EmperaUsu" Width="1.5" PointX="17.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.imei_seguimiento" Width="1.5" PointX="17.75" PointY="21.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.per1onAsnet" Width="1.5" PointX="19.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.VerficaEmail" Width="1.5" PointX="19.75" PointY="12.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="WISETRACKModel.viesPersonaEmpresa" Width="1.5" PointX="19.75" PointY="15.375" IsExpanded="true" />
+        <AssociationConnector Association="WISETRACKModel.FK_Alarma_AlarmaGeocerca" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Alarma_CategoriaAlarma" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Alerta_Alarma" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_ConfAlarmas_Alarma" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_ConfAlarmasDestinatarios_ConfAlarmas" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_ConfAlarmasVehiculo_ConfAlarmas" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_ConfAlarmasDestinatarios_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Geocerca_AlarmaGeocerca" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_ConfAlarmasVehiculo_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Alerta_Seguimiento" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Alerta_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Persona_Area" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_RolesPrivilegios_AspNetRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_RolNivel_AspNetRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Persona_AspNetUsers1" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_EmpresaGPS_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_EmpresaIDButton_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_EmpresaVehiculo_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Geocerca_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Seguimiento_Geocerca" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Sucursal_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_TipoGeocerca_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_UsuarioEmpresa_Empresa" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_EmpresaGPS_GPS" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_EmpresaIDButton_IdButton" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_EmpresaVehiculo_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Geocerca_TipoGeocerca" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_PuntosGeocerca_Geocerca" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_IDButtonGps_GPS" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Seguimiento_GPS" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_IDButtonGps_IdButton" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Vehiculo_Marca" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_RolNivel_Nivel" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Persona_TipoPersona1" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_UsuarioEmpresa_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_UsuarioVehiculo_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_VehiculoConductor_Persona" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_AreaPrivilegios_Privilegios" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Seguimiento_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_Vehiculo_TipoVehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_UsuarioVehiculo_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.FK_VehiculoConductor_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="WISETRACKModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
