@@ -279,7 +279,7 @@ namespace WISETRACK.Controller
             }
             catch (Exception ex)
             {
-                return null;
+                throw new Exception("GpsController",ex);
             }
         }
 
