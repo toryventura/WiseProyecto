@@ -76,10 +76,10 @@
                             </div>
                         </div>
                         <div class="form-inline">
-                            <div class="form-group" style="width: 100%; height: 210px; overflow-y: auto">
+                            <div class="form-group" style="width: 100%; height: 190px; overflow-y: auto">
 
-                                <div class="col-sm-9 table-responsive" style="padding-left: 0; margin-left: 5%; width: 92%; margin-right: 3%; padding-right: 0px; right: 0%; top: 0px;">
-                                    <div id="myGridVehiculos" style="height: 150px; width: 100%" class="ag-theme-balham"></div>
+                                <div class="col-sm-9 table-responsive" style="padding-left: 0; margin-left: 1%; width: 98%; margin-right: 1%; padding-right: 0px; right: 0%; top: 0px;">
+                                    <div id="myGridVehiculos" style="height: 180px; width: 100%" class="ag-theme-balham"></div>
                                 </div>
                             </div>
 
@@ -90,8 +90,8 @@
                                 <input type="button" class="btn btn-primary btn-sm" name="Buscar" value="Buscar" title="Buscar" onclick="CargarReporte();" />
                             </div>
                             <div class="form-group">
-                                <%--<asp:Button runat="server" ID="btnExportar" Text="Exportar" CssClass="btn btn-primary btn-sm" OnClick="btnExportar_Click" />--%>
-                                <input type="button" class="btn btn-primary btn-sm" name="Exportar" value="Exportar Excel" title="Exportar" onclick="onBtExport();" />
+                                <asp:Button runat="server" ID="btnExportar" Text="Exportar" CssClass="btn btn-primary btn-sm" OnClick="btnExportar_Click" />
+                                <%--<input type="button" class="btn btn-primary btn-sm" name="Exportar" value="Exportar Excel" title="Exportar" onclick="onBtExport();" />--%>
                             </div>
 
                         </div>
@@ -117,8 +117,8 @@
                     });
 
                     datepicker1.closest(".k-datepicker")
-                    .add(datepicker1)
-                    .removeClass("k-textbox");
+                        .add(datepicker1)
+                        .removeClass("k-textbox");
 
                     //combine MaskedTextBox with DatePicker (officially unsupported)
                     var datepicker2 = $("#datepicker2");
@@ -132,8 +132,8 @@
                     });
 
                     datepicker2.closest(".k-datepicker")
-                    .add(datepicker2)
-                    .removeClass("k-textbox");
+                        .add(datepicker2)
+                        .removeClass("k-textbox");
                 });
             </script>
 
@@ -182,10 +182,10 @@
                     return params.columnApi.getRowGroupColumns().length === 0;
                 }
             },
-        //{ headerName: '', width: 34, checkboxSelection: true, suppressSorting: true, suppressMenu: true },
-        //{ headerName: "Codigo Cliente", field: "CodCliente", width: 150 },
-        { headerName: "Patente", field: "Patente", width: 150 },
-        { headerName: "Modelo", field: "Modelo", width: 150 }
+            //{ headerName: '', width: 34, checkboxSelection: true, suppressSorting: true, suppressMenu: true },
+            //{ headerName: "Codigo Cliente", field: "CodCliente", width: 150 },
+            { headerName: "Patente", field: "Patente", width: 150 },
+            { headerName: "Modelo", field: "Modelo", width: 150 }
 
         ];
 
@@ -250,15 +250,16 @@
         }
 
         function onBtExport() {
-            var hoy = new Date();
-            var params = {
-                skipHeader: false,
-                skipFooters: true,
-                skipGroups: true,
-                fileName: 'ReporteDetenciones' + hoy.format("mdyyhhmmss") + '.xls'
-            };
+            //var hoy = new Date();
+            //var params = {
+            //    skipHeader: false,
+            //    skipFooters: true,
+            //    skipGroups: true,
+            //    fileName: 'ReporteDetenciones' + hoy.format("mdyyhhmmss") + '.xls'
+            //};
 
-            gridOptions.api.exportDataAsCsv(params);
+            //gridOptions.api.exportDataAsCsv(params);
+            Exprt();
         }
         var sw = 0;
         function CargarReporte() {
@@ -321,6 +322,24 @@
         }
         function destroy(grid) {
             grid.api.destroy();
+        }
+        function Exprt() {
+            var antion = { formato: "0", fechaI: '17/08/2018', fechaF: '18/04/2018' };
+            var j = JSON.stringify(antion);
+            $.ajax({
+                url: "/RptDetenciones.aspx/Exportar",
+                type: 'POST',
+                cache: false,
+                data: j,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json"
+            }).done(function (data) {
+                alert("data");
+            }).fail(function (jqXHR, textStatus) {
+                alert("fail");
+            }).always(function (jqXHR, textStatus) {
+                alert("always");
+            });
         }
         function CargarVehiculos() {
 

@@ -1,9 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
+using System.Web.UI.WebControls;
 using Telerik.Web.UI;
 using WISETRACK.Controller;
 using WISETRACK.Datos;
@@ -16,23 +20,17 @@ namespace WISETRACK
 {
 	public partial class RptDetenciones2 : BasePage
 	{
-		HomeController homeCtrl;
-		ReporteController reporteCtrl;
-		VehiculoController vehiculoCtrl;
-		private PersonaController personaCtrl;
-		private SeguimientoController seguimientoCtrl;
+		static string userName;
+		static string nit;
+
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			homeCtrl = new HomeController();
-			reporteCtrl = new ReporteController();
-			vehiculoCtrl = new VehiculoController();
-			personaCtrl = new PersonaController();
-			seguimientoCtrl = new SeguimientoController();
 
 			//cboplaca.Filter = (RadComboBoxFilter)Convert.ToInt32(2);
 			cbohorai.Filter = (RadComboBoxFilter)Convert.ToInt32(2);
 			cbohoraf.Filter = (RadComboBoxFilter)Convert.ToInt32(2);
+
 
 			if (!IsPostBack)
 			{
@@ -114,7 +112,7 @@ namespace WISETRACK
 			{
 				reporte.Where(w => w.Vehiculo == item.IMEI).ToList().ForEach(f => f.Vehiculo = item.NroPlaca);
 			}
-
+			HttpContext.Current.Session["RptDetenciones"] = reporte;
 			result = JsonConvert.SerializeObject(reporte, Formatting.Indented);
 			return result;
 		}
@@ -133,6 +131,38 @@ namespace WISETRACK
 			return placas;
 		}
 
+		public void exprt()
+		{
+			userName = HttpContext.Current.User.Identity.Name;
+			HomeController homeController = new HomeController();
+			nit = homeController.obtenerNit(userName);
+
+			List<DetencionesRpt> reporte = new List<DetencionesRpt>();
+			reporte = (List<DetencionesRpt>)HttpContext.Current.Session["RptDetenciones"];
+			ReportDocument rptDocument = new ReportDocument();
+			var empresa = "Todas";
+			if (SitePrincipal.ExisteActiva())
+			{
+				empresa = homeController.nombreEmpresa(nit);
+			}
+			string placa = "Todas";
+			var fechaI = Request["datepicker1"].ToString() + " " + cbohorai.Text;
+			var fechaF = Request["datepicker2"].ToString() + " " + cbohoraf.Text;
+			rptDocument.Load(Server.MapPath("~/Reporte/reporteDetencion.rpt"));
+
+			rptDocument.SetDataSource(reporte);
+			rptDocument.SetParameterValue("Empresa", empresa);
+			rptDocument.SetParameterValue("FechaInicio", fechaI);
+			rptDocument.SetParameterValue("FechaFin", fechaF);
+			rptDocument.SetParameterValue("Placa", "");
+
+			Response.Buffer = false;
+			Response.Clear();
+
+			rptDocument.ExportToHttpResponse(ExportFormatType.Excel, Response, true,
+			"reporteDetencion.v" + DateTime.Now.ToString("yyyyMMddHHMMss"));
+
+		}
 
 		protected void cbohoraf_ItemDataBound(object sender, Telerik.Web.UI.RadComboBoxItemEventArgs e)
 		{
@@ -162,7 +192,9 @@ namespace WISETRACK
 				+ ":" + (fechaActual.Minute < 10 ? "0" + fechaActual.Minute : "" + fechaActual.Minute);
 		}
 
-
-
+		protected void btnExportar_Click(object sender, EventArgs e)
+		{
+			exprt();
+		}
 	}
 }

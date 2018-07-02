@@ -75,7 +75,7 @@ namespace WS.LOGICA
 			string sql = "select tr.IMEI, tr.EstadoGPS, tr.Velocidad, tr.Latitud, tr.Longitud, tr.EstadoMotor, tr.FechaGPS, tr.Temperatura, tr.VoltajeBateria, tr.EstadoPuerta, " +
 
 	   " CAST(CASE WHEN d.Descripcion is null THEN 'Ver en Mapa' else d.Descripcion end as varchar(256))as direcciones" +
-	   " from Trama2 tr" +
+	   " from Trama tr" +
 	   " left join OSM.dbo.DireccionRound d on (d.Latitud = ROUND(tr.Latitud,4) and d.Longitud= ROUND(tr.Longitud,4))" +
 	   " where tr.IMEI in(" + imeis + ")" +
 	   " and tr.FechaGPS >=" + "CONVERT(datetime, '" + Todate + "', 103) " +
