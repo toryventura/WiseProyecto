@@ -17,12 +17,6 @@
         }
     </style>
 
-    <script>
-        $(document).ready(function () {
-
-        });
-    </script>
-
     <script type="text/javascript">
         $(document).ready(function () {
             $("#menu1").click(function () {

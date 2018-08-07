@@ -150,6 +150,7 @@ function PintarMapaGeocerca(myobject, map1) {
         var vertices = poligono_aux1.getPath();
         var erlatlng = { lat: vertices.getAt(1).lat(), lng: vertices.getAt(1).lng() };
         map1.setCenter(erlatlng);
+        map1.zoom = 10;
 
     }
     function showArrays(centers, NombreGeo) {

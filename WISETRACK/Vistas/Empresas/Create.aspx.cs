@@ -28,15 +28,17 @@ namespace WISETRACK
         public void add()
         {
             var user = HttpContext.Current.User.Identity.Name;
-            Empresa empresa = new Empresa();
-            empresa.NIT = txtNit.Text;
-            empresa.RazonSocial = txtRazon_social.Text;
-            empresa.email = txtEmail.Text;
-            empresa.Contacto = txtContacto.Text;
-            empresa.emailContacto = txtEmailcontact.Text;
-            empresa.UsuaReg = user;
-            empresa.FechaReg = DateTime.Now;
-            bool sx = emp.createEmpresa(empresa, user);
+			Empresa empresa = new Empresa
+			{
+				NIT = txtNit.Text,
+				RazonSocial = txtRazon_social.Text,
+				email = txtEmail.Text,
+				Contacto = txtContacto.Text,
+				emailContacto = txtEmailcontact.Text,
+				UsuaReg = user,
+				FechaReg = DateTime.Now
+			};
+			bool sx = emp.createEmpresa(empresa, user);
             if (sx == true)
             {
                 MensajeAlerta("Se registro correctamente");

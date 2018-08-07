@@ -171,15 +171,17 @@ namespace WISETRACK
 		{
 			var txtfechaini = Request["datepicker1"].ToString();
 			var txtfechafin = Request["datepicker2"].ToString();
-			ListaAuditoria l_auditoria = new ListaAuditoria();
-			l_auditoria.Patente = cboplaca.Text;
-			l_auditoria.NroPlaca = cboplaca.SelectedValue.ToString();
-			l_auditoria.FechaIni = txtfechaini;
-			l_auditoria.HoraIni = cbohorai.Text;
-			l_auditoria.FechaFin = txtfechafin;
-			l_auditoria.HoraFin = cbohoraf.Text;
-			l_auditoria.tipo = cbokm.SelectedValue;
-			l_auditoria.valor = txtkmh.Text;
+			ListaAuditoria l_auditoria = new ListaAuditoria
+			{
+				Patente = cboplaca.Text,
+				NroPlaca = cboplaca.SelectedValue.ToString(),
+				FechaIni = txtfechaini,
+				HoraIni = cbohorai.Text,
+				FechaFin = txtfechafin,
+				HoraFin = cbohoraf.Text,
+				tipo = cbokm.SelectedValue,
+				valor = txtkmh.Text
+			};
 
 			listaAudit.Add(l_auditoria);
 			if (listaAudit.Count > 0)

@@ -66,17 +66,19 @@ namespace WISETRACK.Vistas.Vehiculos
 
                      var user = HttpContext.Current.User.Identity.Name;
                      string nit = homerCtrl.obtenerNit(user);
-                     Vehiculo vehiculo = new Vehiculo();
-                     vehiculo.NroPlaca = txtplaca.Text;
-                     vehiculo.NroChasis = txtchasis.Text;
-                     vehiculo.NroMotor = txtmotor.Text;
-                     vehiculo.Modelo = txtmodelo.Text;
-                     vehiculo.Patente = txtpatente.Text;
-                     vehiculo.Año = Convert.ToInt32(txtanio.Text);
-                     vehiculo.CodTipoV = Convert.ToInt32(cbotipov.SelectedValue.ToString());
-                     vehiculo.CodMarca = Convert.ToInt32(cbomarca.SelectedValue.ToString());
+					Vehiculo vehiculo = new Vehiculo
+					{
+						NroPlaca = txtplaca.Text,
+						NroChasis = txtchasis.Text,
+						NroMotor = txtmotor.Text,
+						Modelo = txtmodelo.Text,
+						Patente = txtpatente.Text,
+						Año = Convert.ToInt32(txtanio.Text),
+						CodTipoV = Convert.ToInt32(cbotipov.SelectedValue.ToString()),
+						CodMarca = Convert.ToInt32(cbomarca.SelectedValue.ToString())
+					};
 
-                     byte[] imageBytes = new byte[fileupvehiculo.PostedFile.InputStream.Length + 1];
+					byte[] imageBytes = new byte[fileupvehiculo.PostedFile.InputStream.Length + 1];
                      fileupvehiculo.PostedFile.InputStream.Read(imageBytes, 0, imageBytes.Length);
                      vehiculo.Foto = imageBytes;
                      vehiculo.Estado = true;
@@ -103,17 +105,19 @@ namespace WISETRACK.Vistas.Vehiculos
 
                      var user = HttpContext.Current.User.Identity.Name;
                      string nit = homerCtrl.obtenerNit(user);
-                     Vehiculo vehiculo = new Vehiculo();
-                     vehiculo.NroPlaca = txtplaca.Text;
-                     vehiculo.NroChasis = txtchasis.Text;
-                     vehiculo.NroMotor = txtmotor.Text;
-                     vehiculo.Modelo = txtmodelo.Text;
-                     vehiculo.Patente = txtpatente.Text;
-                     vehiculo.Año = Convert.ToInt32(txtanio.Text);
-                     vehiculo.CodTipoV = Convert.ToInt32(cbotipov.SelectedValue.ToString());
-                     vehiculo.CodMarca = Convert.ToInt32(cbomarca.SelectedValue.ToString());
+					Vehiculo vehiculo = new Vehiculo
+					{
+						NroPlaca = txtplaca.Text,
+						NroChasis = txtchasis.Text,
+						NroMotor = txtmotor.Text,
+						Modelo = txtmodelo.Text,
+						Patente = txtpatente.Text,
+						Año = Convert.ToInt32(txtanio.Text),
+						CodTipoV = Convert.ToInt32(cbotipov.SelectedValue.ToString()),
+						CodMarca = Convert.ToInt32(cbomarca.SelectedValue.ToString())
+					};
 
-                     byte[] imageBytes = new byte[fileupvehiculo.PostedFile.InputStream.Length + 1];
+					byte[] imageBytes = new byte[fileupvehiculo.PostedFile.InputStream.Length + 1];
                      fileupvehiculo.PostedFile.InputStream.Read(imageBytes, 0, imageBytes.Length);
                      vehiculo.Foto = imageBytes;
                      vehiculo.Estado = true;

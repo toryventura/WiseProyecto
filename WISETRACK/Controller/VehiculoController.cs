@@ -428,14 +428,16 @@ namespace WISETRACK.Controller
 			bool sw;
 			try
 			{
-				var uv = new UsuarioVehiculo();
-				uv.ci = ci;
-				uv.estado = true;
-				uv.fechaReg = DateTime.Now;
-				uv.id = db.UsuarioVehiculo.Max(s => s.id) + 1;
-				uv.nit = nit;
-				uv.nroplaca = placa;
-				uv.usuarioReg = user;
+				var uv = new UsuarioVehiculo
+				{
+					ci = ci,
+					estado = true,
+					fechaReg = DateTime.Now,
+					id = db.UsuarioVehiculo.Max(s => s.id) + 1,
+					nit = nit,
+					nroplaca = placa,
+					usuarioReg = user
+				};
 				db.UsuarioVehiculo.Add(uv);
 				db.SaveChanges();
 				sw = true;

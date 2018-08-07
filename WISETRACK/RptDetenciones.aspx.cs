@@ -67,16 +67,18 @@ namespace WISETRACK
 			var objs = new List<VehiculoEmpresas>();
 			if (SitePrincipal.ExisteActiva())
 			{
+				var homeCtrl = new HomeController();
 				if (HttpContext.Current.User.IsInRole("SUPERVISOR"))
 				{
 					var user = HttpContext.Current.User.Identity.Name;
+					
 					objs = seguimientoCtrl.GetVehiculos(3, user);
 
 				}
 				else
 				{
 					var user = HttpContext.Current.User.Identity.Name;
-					var homeCtrl = new HomeController();
+					
 					string nit1 = homeCtrl.obtenerNit(user);
 					objs = seguimientoCtrl.GetVehiculos(2, nit1);
 

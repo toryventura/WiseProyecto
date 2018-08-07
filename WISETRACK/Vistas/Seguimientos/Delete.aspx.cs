@@ -51,17 +51,19 @@ namespace WISETRACK.Vistas.Seguimientos
             //seguimientoCtrl.remove(lblid.Text);
             //Response.Redirect("/Vistas/Seguimientos/Index");
             var user = HttpContext.Current.User.Identity.Name;
-            var se = new Seguimiento();
-            se.CodSeguimiento = Convert.ToInt32(lblid.Text);
-            se.FechaInicio = Convert.ToDateTime(lblfechai.Text);
-            se.estado = false;
-            se.FechaFin = DateTime.Now;
-            se.IMEI = lblgps.Text;
-            se.NroPlaca = lblplaca.Text;
-            se.UsuaModif = user;
-            se.FechaModif = DateTime.Now;
+			var se = new Seguimiento
+			{
+				CodSeguimiento = Convert.ToInt32(lblid.Text),
+				FechaInicio = Convert.ToDateTime(lblfechai.Text),
+				estado = false,
+				FechaFin = DateTime.Now,
+				IMEI = lblgps.Text,
+				NroPlaca = lblplaca.Text,
+				UsuaModif = user,
+				FechaModif = DateTime.Now
+			};
 
-            bool sx = seguimientoCtrl.update(se);
+			bool sx = seguimientoCtrl.update(se);
             if (sx == true)
             {
                 MensajeAlerta("Se modifico correctamente");

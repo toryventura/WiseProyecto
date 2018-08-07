@@ -155,7 +155,7 @@ var columnDefs = [
                 return resultElement;
             } else {
                 if (r > 60) { // x > 1hr
-                    starImageElement.src = "/Content/img/tools/rojo.jpg";
+                    starImageElement.src = "/Content/img/tools/rojo.png";
                     resultElement.appendChild(starImageElement);
                     return resultElement;
                 }
@@ -680,7 +680,7 @@ function obtenerFecha1(_fecha, _emotor, _tipov) {
     var minDiff = getMinutos(_fecha);
     if (minDiff < 30) { //x < 30 min
         tipoVehiculo(_tipov);
-        obtenerEstadoMotor(_emotor);
+        obtenerEstadoMotor(_emotor); 
     } else {
         if ((minDiff >= 30) && (minDiff <= 60)) { // x >= 30 min and x < 1hr
             obtenerEstadoMotorByGPS(_emotor);

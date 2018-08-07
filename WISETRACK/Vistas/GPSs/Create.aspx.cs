@@ -45,18 +45,20 @@ namespace WISETRACK.Vistas.GPSs
                 {
                     var user = HttpContext.Current.User.Identity.Name;
                     string nit = homeCtrl.obtenerNit(user);
-                    GPS modelo = new GPS();
-                    modelo.IMEI = txtimei.Text;
-                    modelo.ID = txtid.Text;
-                    modelo.NroTelefono = Convert.ToDecimal(txttelefono.Text);
-                    modelo.Modelo = cbomodelo.Text;
-                    modelo.UsuaReg = user;
-                    modelo.Estado = true;
-                    modelo.FechaReg = DateTime.Now;
-                    modelo.EstadoPuerta = true;
-                    modelo.TiempoEspera = 90;
+					GPS modelo = new GPS
+					{
+						IMEI = txtimei.Text,
+						ID = txtid.Text,
+						NroTelefono = Convert.ToDecimal(txttelefono.Text),
+						Modelo = cbomodelo.Text,
+						UsuaReg = user,
+						Estado = true,
+						FechaReg = DateTime.Now,
+						EstadoPuerta = true,
+						TiempoEspera = 90
+					};
 
-                    bool sx = negocio.Add(modelo, user, nit);
+					bool sx = negocio.Add(modelo, user, nit);
                     if (sx == true)
                     {
                         MensajeAlerta("Se registro satisfactoriamente");
@@ -71,14 +73,16 @@ namespace WISETRACK.Vistas.GPSs
                 {
                     var user = HttpContext.Current.User.Identity.Name;
                     string nit = homeCtrl.obtenerNit(user);
-                    GPS modelo = new GPS();
-                    modelo.IMEI = txtimei.Text;
-                    modelo.ID = txtid.Text;
-                    modelo.NroTelefono = Convert.ToDecimal(txttelefono.Text);
-                    modelo.Modelo = cbomodelo.Text;
-                    modelo.UsuaModif = user;
-                    modelo.FechaModif = DateTime.Now;
-                    bool sy = negocio.ActualizarGPSEmpresa(modelo, user, nit);
+					GPS modelo = new GPS
+					{
+						IMEI = txtimei.Text,
+						ID = txtid.Text,
+						NroTelefono = Convert.ToDecimal(txttelefono.Text),
+						Modelo = cbomodelo.Text,
+						UsuaModif = user,
+						FechaModif = DateTime.Now
+					};
+					bool sy = negocio.ActualizarGPSEmpresa(modelo, user, nit);
                     if (sy == true)
                     {
                         MensajeAlerta("Se registro satisfactoriamente");

@@ -48,11 +48,13 @@ namespace WISETRACK.Vistas.Seguimientos
             var user = HttpContext.Current.User.Identity.Name;
             var fechaI = Request["datepicker1"].ToString();
 
-            var se = new Seguimiento();
-            se.CodSeguimiento = Convert.ToInt32(txtid.Text);
-            se.FechaInicio = Convert.ToDateTime(fechaI);
-            se.estado = chkestado.Checked;
-            if (se.estado == false)
+			var se = new Seguimiento
+			{
+				CodSeguimiento = Convert.ToInt32(txtid.Text),
+				FechaInicio = Convert.ToDateTime(fechaI),
+				estado = chkestado.Checked
+			};
+			if (se.estado == false)
             {
                 se.FechaFin = DateTime.Now;
             }

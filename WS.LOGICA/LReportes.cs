@@ -139,17 +139,19 @@ namespace WS.LOGICA
 								if (fechagpsini != null && fechagpsfin != null)
 								{
 									cantminutos = ant.FechaGPS.Subtract(fechagpsini.Value).TotalMinutes;
-									DetencionesRpt abc = new DetencionesRpt();
-									abc.Conductor = "No definido";
-									abc.FechaInicio = fechagpsini.Value.ToString();
-									abc.FechaFin = fechagpsfin.Value.ToString();
-									abc.Geocerca = "No definido";
-									abc.IDReporte = 1;
-									abc.Latitud = lat;
-									abc.Longitud = lng;
-									abc.Tiempo = Convert.ToInt32(Math.Round(cantminutos, 0));
-									abc.Ubicacion = direcciones;
-									abc.Vehiculo = m;
+									DetencionesRpt abc = new DetencionesRpt
+									{
+										Conductor = "No definido",
+										FechaInicio = fechagpsini.Value.ToString(),
+										FechaFin = fechagpsfin.Value.ToString(),
+										Geocerca = "No definido",
+										IDReporte = 1,
+										Latitud = lat,
+										Longitud = lng,
+										Tiempo = Convert.ToInt32(Math.Round(cantminutos, 0)),
+										Ubicacion = direcciones,
+										Vehiculo = m
+									};
 									if (abc.Tiempo >= 1)
 									{
 										lista.Add(abc);
@@ -181,17 +183,19 @@ namespace WS.LOGICA
 						if (difdia <= x1)
 						{
 							cantminutos = ant.FechaGPS.Subtract(fechagpsini.Value).TotalMinutes;
-							DetencionesRpt abc = new DetencionesRpt();
-							abc.Conductor = "No definido";
-							abc.FechaInicio = fechagpsini.Value.ToString();
-							abc.FechaFin = fechagpsfin.Value.ToString();
-							abc.Geocerca = "No definido";
-							abc.IDReporte = 1;
-							abc.Latitud = lat;
-							abc.Longitud = lng;
-							abc.Tiempo = Convert.ToInt32(Math.Round(cantminutos, 0));
-							abc.Ubicacion = direcciones;
-							abc.Vehiculo = m;
+							DetencionesRpt abc = new DetencionesRpt
+							{
+								Conductor = "No definido",
+								FechaInicio = fechagpsini.Value.ToString(),
+								FechaFin = fechagpsfin.Value.ToString(),
+								Geocerca = "No definido",
+								IDReporte = 1,
+								Latitud = lat,
+								Longitud = lng,
+								Tiempo = Convert.ToInt32(Math.Round(cantminutos, 0)),
+								Ubicacion = direcciones,
+								Vehiculo = m
+							};
 							if (abc.Tiempo >= 1)
 							{
 								lista.Add(abc);

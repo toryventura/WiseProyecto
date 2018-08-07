@@ -60,14 +60,16 @@ namespace WISETRACK.Vistas.GPSs
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             var user = HttpContext.Current.User.Identity.Name;
-            GPS modelo = new GPS();
-            modelo.IMEI = txtimei.Text;
-            modelo.ID = txtid.Text;
-            modelo.NroTelefono = Convert.ToDecimal(txttelefono.Text);
-            modelo.Modelo = cbomodelo.SelectedValue;
-            modelo.UsuaModif = user;
-            modelo.FechaModif = DateTime.Now;
-            bool sx = control.update(modelo);
+			GPS modelo = new GPS
+			{
+				IMEI = txtimei.Text,
+				ID = txtid.Text,
+				NroTelefono = Convert.ToDecimal(txttelefono.Text),
+				Modelo = cbomodelo.SelectedValue,
+				UsuaModif = user,
+				FechaModif = DateTime.Now
+			};
+			bool sx = control.update(modelo);
             if (sx == true)
             {
                 MensajeAlerta("Se modifico correctamente");

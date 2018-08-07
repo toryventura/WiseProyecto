@@ -83,14 +83,16 @@ namespace WISETRACK.Controller
                     db.GPS.Add(g);
                     db.SaveChanges();
 
-                    var egps = new EmpresaGPS();
-                    egps.estado = true;
-                    egps.id = db.EmpresaGPS.Max(r => r.id) + 1;
-                    egps.fechaReg = DateTime.Now;
-                    egps.imei = g.IMEI;
-                    egps.nit = nit;
-                    egps.usuarioReg = user;
-                    db.EmpresaGPS.Add(egps);
+					var egps = new EmpresaGPS
+					{
+						estado = true,
+						id = db.EmpresaGPS.Max(r => r.id) + 1,
+						fechaReg = DateTime.Now,
+						imei = g.IMEI,
+						nit = nit,
+						usuarioReg = user
+					};
+					db.EmpresaGPS.Add(egps);
                     db.SaveChanges();
                     sw = true;
                     transact.Commit();
@@ -144,14 +146,16 @@ namespace WISETRACK.Controller
                     aux.Estado = true;
                     db.SaveChanges();
 
-                    var egps = new EmpresaGPS();
-                    egps.estado = true;
-                    egps.id = db.EmpresaGPS.Max(r => r.id) + 1;
-                    egps.fechaReg = DateTime.Now;
-                    egps.imei = g.IMEI;
-                    egps.nit = nit;
-                    egps.usuarioReg = usuario;
-                    db.EmpresaGPS.Add(egps);
+					var egps = new EmpresaGPS
+					{
+						estado = true,
+						id = db.EmpresaGPS.Max(r => r.id) + 1,
+						fechaReg = DateTime.Now,
+						imei = g.IMEI,
+						nit = nit,
+						usuarioReg = usuario
+					};
+					db.EmpresaGPS.Add(egps);
                     db.SaveChanges();
                     sw = true;
                     transact.Commit();

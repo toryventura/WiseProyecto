@@ -48,16 +48,18 @@ namespace WISETRACK.Vistas.Seguimientos
 
             var fechaI = Request["datepicker1"].ToString();
 
-            var seg = new Seguimiento();
-            seg.estado = chkestado.Checked;
-            seg.FechaInicio = Convert.ToDateTime(fechaI);
-            seg.FechaReg = DateTime.Now;
-            seg.IMEI = cboimei.SelectedValue;
-            seg.NIT = nit;
-            seg.NroPlaca = cboplaca.SelectedValue;
-            seg.UsuaReg = user;
+			var seg = new Seguimiento
+			{
+				estado = chkestado.Checked,
+				FechaInicio = Convert.ToDateTime(fechaI),
+				FechaReg = DateTime.Now,
+				IMEI = cboimei.SelectedValue,
+				NIT = nit,
+				NroPlaca = cboplaca.SelectedValue,
+				UsuaReg = user
+			};
 
-            bool sx = seguimientoCtrl.Add(seg);
+			bool sx = seguimientoCtrl.Add(seg);
             if (sx == true)
             {
                 MensajeAlerta("Se registro satisfactoriamente");

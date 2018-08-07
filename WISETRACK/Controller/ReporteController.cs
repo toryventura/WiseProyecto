@@ -82,14 +82,16 @@ namespace WISETRACK.Controller
 
 			foreach (var item in collection)
 			{
-				temperaturaSerial temp = new temperaturaSerial();
-				temp.EstadoPuerta = item.EstadoPuerta.ToString();
+				temperaturaSerial temp = new temperaturaSerial
+				{
+					EstadoPuerta = item.EstadoPuerta.ToString(),
 
-				temp.FechaGPS = (DateTime)item.FechaGPS;
-				temp.IDButton = item.IDButton;
-				temp.Latitud = (float)Convert.ToDouble(item.Latitud);
-				temp.Longitud = (float)Convert.ToDouble(item.Longitud);
-				temp.Velocidad = item.Velocidad.Value;
+					FechaGPS = (DateTime)item.FechaGPS,
+					IDButton = item.IDButton,
+					Latitud = (float)Convert.ToDouble(item.Latitud),
+					Longitud = (float)Convert.ToDouble(item.Longitud),
+					Velocidad = item.Velocidad.Value
+				};
 				if (String.IsNullOrEmpty(item.Nombre))
 				{
 					temp.Nombre = "No Asignado";
@@ -944,17 +946,19 @@ namespace WISETRACK.Controller
 				{
 					if (fechagpsini != null && fechagpsfin != null)
 					{
-						RptDetencionesViewModel abc = new RptDetencionesViewModel();
-						abc.Conductor = "No definido";
-						abc.FechaInicio = fechagpsini.Value.ToString();
-						abc.FechaFin = fechagpsfin.Value.ToString();
-						abc.Geocerca = "No definido";
-						abc.IDReporte = 1;
-						abc.Latitud = lat;
-						abc.Longitud = lng;
-						abc.Tiempo = Convert.ToInt32(Math.Round(cantminutos, 0));
-						abc.Ubicacion = direcciones;
-						abc.Vehiculo = placa;
+						RptDetencionesViewModel abc = new RptDetencionesViewModel
+						{
+							Conductor = "No definido",
+							FechaInicio = fechagpsini.Value.ToString(),
+							FechaFin = fechagpsfin.Value.ToString(),
+							Geocerca = "No definido",
+							IDReporte = 1,
+							Latitud = lat,
+							Longitud = lng,
+							Tiempo = Convert.ToInt32(Math.Round(cantminutos, 0)),
+							Ubicacion = direcciones,
+							Vehiculo = placa
+						};
 						if (abc.Tiempo >= 1)
 						{
 							lista.Add(abc);
@@ -970,17 +974,19 @@ namespace WISETRACK.Controller
 				{
 					if (fechagpsini != null && fechagpsfin != null)
 					{
-						RptDetencionesViewModel abc = new RptDetencionesViewModel();
-						abc.Conductor = "No definido";
-						abc.FechaInicio = fechagpsini.Value.ToString();
-						abc.FechaFin = fechagpsfin.Value.ToString();
-						abc.Geocerca = "No definido";
-						abc.IDReporte = 1;
-						abc.Latitud = lat;
-						abc.Longitud = lng;
-						abc.Tiempo = Convert.ToInt32(Math.Round(cantminutos, 0));
-						abc.Ubicacion = direcciones;
-						abc.Vehiculo = placa;
+						RptDetencionesViewModel abc = new RptDetencionesViewModel
+						{
+							Conductor = "No definido",
+							FechaInicio = fechagpsini.Value.ToString(),
+							FechaFin = fechagpsfin.Value.ToString(),
+							Geocerca = "No definido",
+							IDReporte = 1,
+							Latitud = lat,
+							Longitud = lng,
+							Tiempo = Convert.ToInt32(Math.Round(cantminutos, 0)),
+							Ubicacion = direcciones,
+							Vehiculo = placa
+						};
 						if (abc.Tiempo >= 1)
 						{
 							lista.Add(abc);
@@ -1071,17 +1077,19 @@ namespace WISETRACK.Controller
 				{
 					if (fechagpsini != null && fechagpsfin != null)
 					{
-						RptDetencionesViewModel abc = new RptDetencionesViewModel();
-						abc.Conductor = "No definido";
-						abc.FechaInicio = fechagpsini.Value.ToString();
-						abc.FechaFin = fechagpsfin.Value.ToString();
-						abc.Geocerca = "No definido";
-						abc.IDReporte = 1;
-						abc.Latitud = lat;
-						abc.Longitud = lng;
-						abc.Tiempo = Convert.ToInt32(Math.Round(cantminutos, 0));
-						abc.Ubicacion = direcciones;
-						abc.Vehiculo = "";
+						RptDetencionesViewModel abc = new RptDetencionesViewModel
+						{
+							Conductor = "No definido",
+							FechaInicio = fechagpsini.Value.ToString(),
+							FechaFin = fechagpsfin.Value.ToString(),
+							Geocerca = "No definido",
+							IDReporte = 1,
+							Latitud = lat,
+							Longitud = lng,
+							Tiempo = Convert.ToInt32(Math.Round(cantminutos, 0)),
+							Ubicacion = direcciones,
+							Vehiculo = ""
+						};
 						if (abc.Tiempo >= 1)
 						{
 							lista.Add(abc);
@@ -1097,17 +1105,19 @@ namespace WISETRACK.Controller
 				{
 					if (fechagpsini != null && fechagpsfin != null)
 					{
-						RptDetencionesViewModel abc = new RptDetencionesViewModel();
-						abc.Conductor = "No definido";
-						abc.FechaInicio = fechagpsini.Value.ToString();
-						abc.FechaFin = fechagpsfin.Value.ToString();
-						abc.Geocerca = "No definido";
-						abc.IDReporte = 1;
-						abc.Latitud = lat;
-						abc.Longitud = lng;
-						abc.Tiempo = Convert.ToInt32(Math.Round(cantminutos, 0));
-						abc.Ubicacion = direcciones;
-						abc.Vehiculo = "ass";
+						RptDetencionesViewModel abc = new RptDetencionesViewModel
+						{
+							Conductor = "No definido",
+							FechaInicio = fechagpsini.Value.ToString(),
+							FechaFin = fechagpsfin.Value.ToString(),
+							Geocerca = "No definido",
+							IDReporte = 1,
+							Latitud = lat,
+							Longitud = lng,
+							Tiempo = Convert.ToInt32(Math.Round(cantminutos, 0)),
+							Ubicacion = direcciones,
+							Vehiculo = "ass"
+						};
 						if (abc.Tiempo >= 1)
 						{
 							lista.Add(abc);

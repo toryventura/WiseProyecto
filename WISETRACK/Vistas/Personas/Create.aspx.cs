@@ -158,15 +158,17 @@ namespace WISETRACK.Vistas.Personas
 
                             if (!rol.Equals("SA"))
                             {
-                                UsuarioEmpresa ue = new UsuarioEmpresa();
-                                ue.NIT = homeCtrl.obtenerNit(userName);
-                                ue.CI = txtCI.Text;
-                                ue.UsuaReg = userName;
-                                ue.FechaReg = DateTime.Now;
-                                ue.Activo = false;
-                                ue.Estado = true;
+								UsuarioEmpresa ue = new UsuarioEmpresa
+								{
+									NIT = homeCtrl.obtenerNit(userName),
+									CI = txtCI.Text,
+									UsuaReg = userName,
+									FechaReg = DateTime.Now,
+									Activo = false,
+									Estado = true
+								};
 
-                                bool sw = pc.addUsuarioEmpresa(ue);
+								bool sw = pc.addUsuarioEmpresa(ue);
 
                                 if (sw == true)
                                 {
@@ -267,15 +269,17 @@ namespace WISETRACK.Vistas.Personas
 
                             if (!rol.Equals("SA"))
                             {
-                                UsuarioEmpresa ue = new UsuarioEmpresa();
-                                ue.NIT = homeCtrl.obtenerNit(userName);
-                                ue.CI = txtCI.Text;
-                                ue.UsuaReg = userName;
-                                ue.FechaReg = DateTime.Now;
-                                ue.Activo = false;
-                                ue.Estado = true;
+								UsuarioEmpresa ue = new UsuarioEmpresa
+								{
+									NIT = homeCtrl.obtenerNit(userName),
+									CI = txtCI.Text,
+									UsuaReg = userName,
+									FechaReg = DateTime.Now,
+									Activo = false,
+									Estado = true
+								};
 
-                                bool sw = pc.addUsuarioEmpresa(ue);
+								bool sw = pc.addUsuarioEmpresa(ue);
 
                                 if (sw == true)
                                 {

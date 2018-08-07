@@ -10,9 +10,11 @@ namespace WISETRACK
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            var settings = new FriendlyUrlSettings();
-            settings.AutoRedirectMode = RedirectMode.Off;
-            routes.EnableFriendlyUrls(settings);
+			var settings = new FriendlyUrlSettings
+			{
+				AutoRedirectMode = RedirectMode.Off
+			};
+			routes.EnableFriendlyUrls(settings);
         }
     }
 }

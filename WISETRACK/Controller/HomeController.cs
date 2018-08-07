@@ -33,5 +33,14 @@ namespace WISETRACK.Controller
             var result = db.Empresa.Where(s => s.NIT == nit).SingleOrDefault().RazonSocial;
             return result.ToString();
         }
-    }
+		public string GetCI(string user)
+		{
+			string ci = (from p in db.Persona
+						 join u in db.AspNetUsers
+						 on p.IdUser equals u.Id
+						 where u.UserName == user
+						 select p.CI).SingleOrDefault();
+			return ci.ToString();
+		}
+	}
 }

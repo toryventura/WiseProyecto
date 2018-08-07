@@ -87,16 +87,18 @@ namespace WISETRACK.Controller
 
 			foreach (var item in collection)
 			{
-				TempSerial obt = new TempSerial();
-				obt.ID = item.ID;
-				obt.EstadoGPS = item.EstadoGPS;
-				obt.EstadoMotor = item.EstadoMotor;
-				obt.Velocidad = (float)item.Velocidad;
-				obt.Latitud = (float)item.Latitud;
-				obt.Longitud = (float)item.Longitud;
-				obt.FechaGPS = item.FechaGPS.Date.ToString();
-				obt.NroPlaca = item.NroPlaca;
-				obt.Nombre = item.Nombre;
+				TempSerial obt = new TempSerial
+				{
+					ID = item.ID,
+					EstadoGPS = item.EstadoGPS,
+					EstadoMotor = item.EstadoMotor,
+					Velocidad = (float)item.Velocidad,
+					Latitud = (float)item.Latitud,
+					Longitud = (float)item.Longitud,
+					FechaGPS = item.FechaGPS.Date.ToString(),
+					NroPlaca = item.NroPlaca,
+					Nombre = item.Nombre
+				};
 				lista.Add(obt);
 			}
 			return lista;
@@ -146,8 +148,10 @@ namespace WISETRACK.Controller
 			clsSeguimiento se;
 			foreach (var item in lista)
 			{
-				se = new clsSeguimiento();
-				se.CodSeguimiento = item.CodSeguimiento;
+				se = new clsSeguimiento
+				{
+					CodSeguimiento = item.CodSeguimiento
+				};
 				var estado = item.estado;
 				if (estado.Equals(true))
 				{
@@ -305,29 +309,31 @@ namespace WISETRACK.Controller
 			var ListV = db.Vehiculo.Where(s => s.Estado == true).ToList();
 			foreach (var item in collection)
 			{
-				TramaTempViewModel obj = new TramaTempViewModel();
-				obj.Asimut = item.Asimut.Value;
-				obj.direcciones = item.direcciones;
-				obj.EstadoGPS = (item.EstadoGPS == 1) ? "Encendido" : "Apagado";
-				obj.EstadoMotor = item.EstadoMotor.Value;
-				obj.EstadoPuerta = (item.EstadoPuerta == true) ? "Cerrado" : "Abierto";
-				obj.FechaGPS = item.FechaGPS.Value;
-				obj.ID = item.ID;
-				obj.IDButton = item.IDButton;
-				obj.IMEI = item.IMEI;
-				obj.Kilometraje = item.Kilometraje.Value;
-				obj.Latitud = item.Latitud.Value;
-				obj.Longitud = item.Longitud.Value;
-				obj.NIT = item.NIT;
-				obj.Nombre = item.Nombre;
-				obj.Nro = item.Nro;
-				obj.NroPlaca = item.NroPlaca;
-				obj.Temperatura = item.Temperatura.Value;
+				TramaTempViewModel obj = new TramaTempViewModel
+				{
+					Asimut = item.Asimut.Value,
+					direcciones = item.direcciones,
+					EstadoGPS = (item.EstadoGPS == 1) ? "Encendido" : "Apagado",
+					EstadoMotor = item.EstadoMotor.Value,
+					EstadoPuerta = (item.EstadoPuerta == true) ? "Cerrado" : "Abierto",
+					FechaGPS = item.FechaGPS.Value,
+					ID = item.ID,
+					IDButton = item.IDButton,
+					IMEI = item.IMEI,
+					Kilometraje = item.Kilometraje.Value,
+					Latitud = item.Latitud.Value,
+					Longitud = item.Longitud.Value,
+					NIT = item.NIT,
+					Nombre = item.Nombre,
+					Nro = item.Nro,
+					NroPlaca = item.NroPlaca,
+					Temperatura = item.Temperatura.Value,
 
-				obj.tipov = ListV.Count > 0 ? ListV.Where(v => v.NroPlaca == item.NroPlaca).Select(d => d.CodTipoV).FirstOrDefault() : 1;
-				obj.Velocidad = item.Velocidad.Value;
-				obj.VoltajeBateria = item.VoltajeBateria.Value;
-				obj.Patente = ListV.Count > 0 ? ListV.Where(v => v.NroPlaca == item.NroPlaca).Select(d => d.Patente).FirstOrDefault() : "";
+					tipov = ListV.Count > 0 ? ListV.Where(v => v.NroPlaca == item.NroPlaca).Select(d => d.CodTipoV).FirstOrDefault() : 1,
+					Velocidad = item.Velocidad.Value,
+					VoltajeBateria = item.VoltajeBateria.Value,
+					Patente = ListV.Count > 0 ? ListV.Where(v => v.NroPlaca == item.NroPlaca).Select(d => d.Patente).FirstOrDefault() : ""
+				};
 				lista.Add(obj);
 			}
 			return lista;
@@ -341,24 +347,26 @@ namespace WISETRACK.Controller
 ).ToList();
 			foreach (var item in collection)
 			{
-				TramaTempViewModel obj = new TramaTempViewModel();
-				obj.Asimut = item.Asimut.Value;
-				obj.direcciones = item.direcciones;
-				obj.EstadoGPS = (item.EstadoGPS == 1) ? "Encendido" : "Apagado";
-				obj.EstadoMotor = item.EstadoMotor.Value;
-				obj.EstadoPuerta = (item.EstadoPuerta == true) ? "Cerrado" : "Abierto";
-				obj.FechaGPS = item.FechaGPS.Value;
-				obj.ID = item.ID;
-				obj.IDButton = item.IDButton;
-				obj.IMEI = item.IMEI;
-				obj.Kilometraje = item.Kilometraje.Value;
-				obj.Latitud = item.Latitud.Value;
-				obj.Longitud = item.Longitud.Value;
-				obj.NIT = item.NIT;
-				obj.Nombre = item.Nombre;
-				obj.Nro = item.Nro;
-				obj.NroPlaca = item.NroPlaca;
-				obj.Temperatura = item.Temperatura.Value;
+				TramaTempViewModel obj = new TramaTempViewModel
+				{
+					Asimut = item.Asimut.Value,
+					direcciones = item.direcciones,
+					EstadoGPS = (item.EstadoGPS == 1) ? "Encendido" : "Apagado",
+					EstadoMotor = item.EstadoMotor.Value,
+					EstadoPuerta = (item.EstadoPuerta == true) ? "Cerrado" : "Abierto",
+					FechaGPS = item.FechaGPS.Value,
+					ID = item.ID,
+					IDButton = item.IDButton,
+					IMEI = item.IMEI,
+					Kilometraje = item.Kilometraje.Value,
+					Latitud = item.Latitud.Value,
+					Longitud = item.Longitud.Value,
+					NIT = item.NIT,
+					Nombre = item.Nombre,
+					Nro = item.Nro,
+					NroPlaca = item.NroPlaca,
+					Temperatura = item.Temperatura.Value
+				};
 				//var rtipov = db.Vehiculo.Where(v => v.NroPlaca == item.NroPlaca).Select(v => v.CodTipoV).SingleOrDefault();
 				var rtipovv = listV.Where(g => g.NroPlaca == item.NroPlaca).Select(f => f.CodTipoV).FirstOrDefault();
 				obj.tipov = listV.Count > 0 ? rtipovv : 1;
@@ -378,24 +386,26 @@ namespace WISETRACK.Controller
 			{
 				var nroplaca = db.Vehiculo.Where(s => s.NroPlaca == placa || s.Patente == placa).SingleOrDefault().NroPlaca.ToString();
 				var collection = db.TramaTemp1.Where(p => p.NroPlaca == nroplaca).SingleOrDefault();
-				TramaTempViewModel obj = new TramaTempViewModel();
-				obj.Asimut = collection.Asimut.Value;
-				obj.direcciones = collection.direcciones;
-				obj.EstadoGPS = (collection.EstadoGPS == 1) ? "Encendido" : "Apagado";
-				obj.EstadoMotor = collection.EstadoMotor.Value;
-				obj.EstadoPuerta = (collection.EstadoPuerta == true) ? "Cerrado" : "Abierto";
-				obj.FechaGPS = collection.FechaGPS.Value;
-				obj.ID = collection.ID;
-				obj.IDButton = collection.IDButton;
-				obj.IMEI = collection.IMEI;
-				obj.Kilometraje = collection.Kilometraje.Value;
-				obj.Latitud = collection.Latitud.Value;
-				obj.Longitud = collection.Longitud.Value;
-				obj.NIT = collection.NIT;
-				obj.Nombre = collection.Nombre;
-				obj.Nro = collection.Nro;
-				obj.NroPlaca = collection.NroPlaca;
-				obj.Temperatura = collection.Temperatura.Value;
+				TramaTempViewModel obj = new TramaTempViewModel
+				{
+					Asimut = collection.Asimut.Value,
+					direcciones = collection.direcciones,
+					EstadoGPS = (collection.EstadoGPS == 1) ? "Encendido" : "Apagado",
+					EstadoMotor = collection.EstadoMotor.Value,
+					EstadoPuerta = (collection.EstadoPuerta == true) ? "Cerrado" : "Abierto",
+					FechaGPS = collection.FechaGPS.Value,
+					ID = collection.ID,
+					IDButton = collection.IDButton,
+					IMEI = collection.IMEI,
+					Kilometraje = collection.Kilometraje.Value,
+					Latitud = collection.Latitud.Value,
+					Longitud = collection.Longitud.Value,
+					NIT = collection.NIT,
+					Nombre = collection.Nombre,
+					Nro = collection.Nro,
+					NroPlaca = collection.NroPlaca,
+					Temperatura = collection.Temperatura.Value
+				};
 				var rtipov = db.Vehiculo.Where(v => v.NroPlaca == collection.NroPlaca).Select(v => v.CodTipoV).SingleOrDefault();
 				obj.tipov = rtipov;
 				obj.Velocidad = collection.Velocidad.Value;

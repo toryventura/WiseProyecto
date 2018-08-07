@@ -39,45 +39,187 @@ namespace WISETRACK.Controller
 
 		public void guardarGeocerca(List<geocercaSerial> lista, List<puntosgeoSerial> listag)
 		{
-			try
+			using (var tr = db.Database.BeginTransaction())
 			{
-				homeCtrl = new HomeController();
-				var user = HttpContext.Current.User.Identity.Name;
-				string nit = homeCtrl.obtenerNit(user);
-
-				foreach (var item in lista)
+				try
 				{
-					geo = new WISETRACK.Datos.Geocerca();
-					geo.Descripcion = item.Descripcion;
-					geo.ColorLimite = item.ColorLimite;
-					geo.ColorRelleno = item.ColorRelleno;
-					geo.CodTipoGEO = item.CodTipoGEO;
-					geo.UsuaReg = user;
-					geo.FechaReg = DateTime.Now;
-					geo.NIT = nit;
+					homeCtrl = new HomeController();
+					var user = HttpContext.Current.User.Identity.Name;
+					string nit = homeCtrl.obtenerNit(user);
+
+					foreach (var item in lista)
+					{
+						geo = new WISETRACK.Datos.Geocerca
+						{
+							Descripcion = item.Descripcion,
+							ColorLimite = item.ColorLimite,
+							ColorRelleno = item.ColorRelleno,
+							CodTipoGEO = item.CodTipoGEO,
+							UsuaReg = user,
+							FechaReg = DateTime.Now,
+							NIT = nit
+						};
+						db.Geocerca.Add(geo);
+						db.SaveChanges();
+					}
+
+					var id = db.Geocerca.Where(u => u.CodTipoGEO == geo.CodTipoGEO && u.ColorLimite == geo.ColorLimite && u.ColorRelleno == geo.ColorRelleno && u.NIT == geo.NIT && u.UsuaReg == geo.UsuaReg).Max(u => u.CodigoGEO);
+
+					foreach (var item in listag)
+					{
+						pgeo = new WISETRACK.Datos.PuntosGeocerca
+						{
+							CodigoGEO = id,
+							Latitud = item.Latitud,
+							Longitud = item.Longitud,
+							UsuaReg = user,
+							FechaReg = DateTime.Now
+						};
+						db.PuntosGeocerca.Add(pgeo);
+						db.SaveChanges();
+					}
+					tr.Commit();
+				}
+				catch (Exception ex)
+				{
+					tr.Rollback();
+					throw new Exception("Negocio Guardar", ex);
+				}
+
+			}
+
+		}
+
+		public void AddGeocerca(geocercaSerial geocerca, List<puntosgeoSerial> puntosgeos)
+		{
+			using (var tr = db.Database.BeginTransaction())
+			{
+				try
+				{
+					homeCtrl = new HomeController();
+					var user = HttpContext.Current.User.Identity.Name;
+					string nit = homeCtrl.obtenerNit(user);
+
+
+					geo = new WISETRACK.Datos.Geocerca
+					{
+						Descripcion = geocerca.Descripcion,
+						ColorLimite = geocerca.ColorLimite,
+						ColorRelleno = geocerca.ColorRelleno,
+						CodTipoGEO = geocerca.CodTipoGEO,
+						UsuaReg = user,
+						FechaReg = DateTime.Now,
+						NIT = nit
+					};
 					db.Geocerca.Add(geo);
 					db.SaveChanges();
+					var id = geo.CodigoGEO;
+
+					foreach (var item in puntosgeos)
+					{
+						pgeo = new WISETRACK.Datos.PuntosGeocerca
+						{
+							Latitud = item.Latitud,
+							Longitud = item.Longitud,
+							UsuaReg = user,
+							FechaReg = DateTime.Now,
+							Geocerca = geo
+						};
+						db.PuntosGeocerca.Add(pgeo);
+						db.SaveChanges();
+					}
+					tr.Commit();
 				}
-
-				var id = db.Geocerca.Where(u => u.CodTipoGEO == geo.CodTipoGEO && u.ColorLimite == geo.ColorLimite && u.ColorRelleno == geo.ColorRelleno && u.NIT == geo.NIT && u.UsuaReg == geo.UsuaReg).Max(u => u.CodigoGEO);
-
-				foreach (var item in listag)
+				catch (Exception ex)
 				{
-					pgeo = new WISETRACK.Datos.PuntosGeocerca();
-					pgeo.CodigoGEO = id;
-					pgeo.Latitud = item.Latitud;
-					pgeo.Longitud = item.Longitud;
-					pgeo.UsuaReg = user;
-					pgeo.FechaReg = DateTime.Now;
-					db.PuntosGeocerca.Add(pgeo);
-					db.SaveChanges();
+					tr.Rollback();
+					throw new Exception("Negocio AddGeocerca", ex);
 				}
+
 			}
-			catch (Exception)
-			{
-				throw;
-			}
+
 		}
+		public WS.ENTIDADES.Geocerca GetPuntos(int codg)
+		{
+			try
+			{
+				var geocerca = (from x in db.Geocerca
+								join b in db.TipoGeocerca on x.CodTipoGEO equals b.CodTipoGEO
+								where x.CodigoGEO == codg
+								select new WS.ENTIDADES.Geocerca()
+								{
+									CodigoGEO = x.CodigoGEO,
+									CodTipoGEO = x.CodTipoGEO,
+									TipoDescripcion = b.Descripcion,
+									ColorLimite = x.ColorLimite,
+									ColorRelleno = x.ColorRelleno,
+									Descripcion = x.Descripcion,
+
+									FechaReg = x.FechaReg,
+									NIT = x.NIT,
+									UsuaModif = x.UsuaModif,
+									UsuaReg = x.UsuaReg
+								}).FirstOrDefault();
+				if (geocerca != null)
+				{
+					geocerca.Coordenadas = GetPuntosGeocerca(geocerca.CodigoGEO);
+
+				}
+
+				return geocerca;
+
+			}
+			catch (Exception ex)
+			{
+
+				throw new Exception("Logica: GetPuntos", ex);
+			}
+
+		}
+		public void UpdateGeocerca(geocercaSerial geocerca, List<puntosgeoSerial> puntosgeos)
+		{
+			using (var tr = db.Database.BeginTransaction())
+			{
+				try
+				{
+					homeCtrl = new HomeController();
+					var user = HttpContext.Current.User.Identity.Name;
+					string nit = homeCtrl.obtenerNit(user);
+					geo = db.Geocerca.Where(s => s.CodigoGEO == geocerca.CodGeocerca).FirstOrDefault();
+					geo.CodTipoGEO = geocerca.CodTipoGEO;
+					geo.ColorLimite = geocerca.ColorLimite;
+					geo.ColorRelleno = geocerca.ColorRelleno;
+					geo.Descripcion = geocerca.Descripcion;
+					geo.NIT = nit;
+					db.PuntosGeocerca.RemoveRange(db.PuntosGeocerca.Where(s => s.CodigoGEO == geo.CodigoGEO));
+					db.SaveChanges();
+
+					foreach (var item in puntosgeos)
+					{
+						pgeo = new WISETRACK.Datos.PuntosGeocerca
+						{
+							CodigoGEO = geo.CodigoGEO,
+							Latitud = item.Latitud,
+							Longitud = item.Longitud,
+							UsuaReg = user,
+							FechaReg = DateTime.Now,
+
+						};
+						db.PuntosGeocerca.Add(pgeo);
+						db.SaveChanges();
+					}
+					tr.Commit();
+				}
+				catch (Exception ex)
+				{
+					tr.Rollback();
+					throw new Exception("Negocio AddGeocerca", ex);
+				}
+
+			}
+
+		}
+
 
 		public List<sp_reporteGeocerca_Result> exportarGeocerca(int cod)
 		{
@@ -128,7 +270,7 @@ namespace WISETRACK.Controller
 			}
 			catch (Exception ex)
 			{
-				return null;
+				throw new Exception("Logica: GetTiposGeocercaSA", ex);
 			}
 
 		}
@@ -204,14 +346,16 @@ namespace WISETRACK.Controller
 
 					foreach (var item in listag)
 					{
-						pgeo = new WISETRACK.Datos.PuntosGeocerca();
-						pgeo.CodigoGEO = id;
-						pgeo.Latitud = item.Latitud;
-						pgeo.Longitud = item.Longitud;
-						pgeo.UsuaReg = user;
-						pgeo.UsuaModif = user;
-						pgeo.FechaReg = DateTime.Now;
-						pgeo.FechaModif = DateTime.Now;
+						pgeo = new WISETRACK.Datos.PuntosGeocerca
+						{
+							CodigoGEO = id,
+							Latitud = item.Latitud,
+							Longitud = item.Longitud,
+							UsuaReg = user,
+							UsuaModif = user,
+							FechaReg = DateTime.Now,
+							FechaModif = DateTime.Now
+						};
 						db.PuntosGeocerca.Add(pgeo);
 						db.SaveChanges();
 					}
@@ -245,6 +389,84 @@ namespace WISETRACK.Controller
 				var lists = (from x in db.Geocerca join b in db.TipoGeocerca on x.CodTipoGEO equals b.CodTipoGEO select new DetalleGeocerca() { ID = x.CodigoGEO, geocerca = x.Descripcion, zona = b.Descripcion, nit = x.NIT }).ToList();
 
 				return lists;
+			}
+
+		}
+		public List<WS.ENTIDADES.Geocerca> getGeocercasAllM(string nit = "")
+		{
+			if (nit != "")
+			{
+				var lists = (from x in db.Geocerca
+							 join b in db.TipoGeocerca on x.CodTipoGEO equals b.CodTipoGEO
+							 where x.NIT == nit
+							 select new WS.ENTIDADES.Geocerca()
+							 {
+								 CodigoGEO = x.CodigoGEO,
+								 CodTipoGEO = x.CodTipoGEO,
+								 TipoDescripcion = b.Descripcion,
+								 ColorLimite = x.ColorLimite,
+								 ColorRelleno = x.ColorRelleno,
+								 Descripcion = x.Descripcion,
+
+								 FechaReg = x.FechaReg,
+								 NIT = x.NIT,
+								 UsuaModif = x.UsuaModif,
+								 UsuaReg = x.UsuaReg
+							 }).ToList();
+				foreach (var item in lists)
+				{
+					item.Coordenadas = GetPuntosGeocerca(item.CodigoGEO);
+				}
+
+				return lists;
+			}
+			else
+			{
+				var lists = (from x in db.Geocerca
+							 join b in db.TipoGeocerca on x.CodTipoGEO equals b.CodTipoGEO
+							 select new WS.ENTIDADES.Geocerca()
+							 {
+								 CodigoGEO = x.CodigoGEO,
+								 CodTipoGEO = x.CodTipoGEO,
+								 TipoDescripcion = x.Descripcion,
+								 ColorLimite = x.ColorLimite,
+								 ColorRelleno = x.ColorRelleno,
+								 Descripcion = x.Descripcion,
+								 FechaModif = x.FechaModif.Value,
+								 FechaReg = x.FechaReg,
+								 NIT = x.NIT,
+								 UsuaModif = x.UsuaModif,
+								 UsuaReg = x.UsuaReg
+							 }).ToList();
+				foreach (var item in lists)
+				{
+					item.Coordenadas = GetPuntosGeocerca(item.CodigoGEO);
+				}
+
+				return lists;
+			}
+
+		}
+
+		private List<WS.ENTIDADES.PuntosGeocerca> GetPuntosGeocerca(int codigoGEO)
+		{
+			try
+			{
+				var puntosGeocercas = (from s in db.PuntosGeocerca
+									   where s.CodigoGEO == codigoGEO
+									   select new WS.ENTIDADES.PuntosGeocerca()
+									   {
+										   CodigoGEO = s.CodigoGEO,
+										   Latitud = s.Latitud,
+										   Longitud = s.Longitud,
+										   Nro = s.Nro
+
+									   }).ToList();
+				return puntosGeocercas;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Logica:GetPuntosGeocerca ", ex);
 			}
 
 		}

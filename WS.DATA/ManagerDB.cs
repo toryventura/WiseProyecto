@@ -21,10 +21,12 @@ namespace WS.DATA
 			int i = -1;
 			using (SqlConnection db = ConexionSingleton.getConectionDB())
 			{
-				SqlCommand command = new SqlCommand();
-				command.Connection = db;
-				command.CommandType = CommandType.StoredProcedure;
-				command.CommandText = name;
+				SqlCommand command = new SqlCommand
+				{
+					Connection = db,
+					CommandType = CommandType.StoredProcedure,
+					CommandText = name
+				};
 				try
 				{
 					db.Open();
@@ -64,8 +66,10 @@ namespace WS.DATA
 		{
 			using (SqlConnection db = ConexionSingleton.getConectionDB())
 			{
-				SqlCommand command = new SqlCommand(sqlquery);
-				command.Connection = db;
+				SqlCommand command = new SqlCommand(sqlquery)
+				{
+					Connection = db
+				};
 				List<T> list = new List<T>();
 				try
 				{
@@ -117,10 +121,12 @@ namespace WS.DATA
 		{
 			using (SqlConnection db = ConexionSingleton.getConectionDB())
 			{
-				SqlCommand command = new SqlCommand();
-				command.Connection = db;
-				command.CommandType = CommandType.StoredProcedure;
-				command.CommandText = name;
+				SqlCommand command = new SqlCommand
+				{
+					Connection = db,
+					CommandType = CommandType.StoredProcedure,
+					CommandText = name
+				};
 				List<T> list = new List<T>();
 				try
 				{

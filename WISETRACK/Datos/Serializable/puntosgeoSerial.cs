@@ -8,8 +8,8 @@ namespace WISETRACK.Datos.Serializable
     [Serializable]
     public class puntosgeoSerial
     {
-        public float Latitud { get; set; }
-        public float Longitud { get; set; }
+        public double Latitud { get; set; }
+        public double  Longitud { get; set; }
 
     }
 }
